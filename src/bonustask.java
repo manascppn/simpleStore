@@ -5,14 +5,12 @@ public class bonustask {
     public static void main(String[] args) {
 
         Scanner input = new Scanner(System.in);
-
-        // Prices and product names
+        
         double mousePrice = 20;
         double keyboardPrice = 40;
         double headphonesPrice = 50;
         double standPrice = 30;
 
-        // Totals and discounts
         double subtotal = 0;
         double discount = 0;
         double finalTotal;
@@ -21,25 +19,20 @@ public class bonustask {
         double itemCost;
         double itemDiscount;
 
-        // Product selection variables
         int choice;
         int quantity;
         String productName = "";
         double price = 0;
 
-        // Counters for each product
         int mouseCount = 0;
         int keyboardCount = 0;
         int headphonesCount = 0;
         int standCount = 0;
 
-        // Total number of items
         int itemsPurchased = 0;
 
-        // Bonus 1: Large quantity discount
         double quantityDiscountTotal = 0;
 
-        // Store menu
         while (true) {
 
             System.out.println("\n===== SIMPLE STORE =====");
@@ -52,12 +45,10 @@ public class bonustask {
 
             choice = input.nextInt();
 
-            // Exit the menu
             if (choice == 5) {
                 break;
             }
 
-            // Identify the selected product
             if (choice == 1) {
                 productName = "Mouse";
                 price = mousePrice;
@@ -84,7 +75,6 @@ public class bonustask {
 
             quantity = input.nextInt();
 
-            // Validate quantity
             if (quantity <= 0) {
                 System.out.println("Invalid quantity.");
                 System.out.println(
@@ -93,11 +83,8 @@ public class bonustask {
                 continue;
             }
 
-            // Calculate the cost of the selected product
             itemCost = price * quantity;
-
-            // Bonus 1: Give 5% discount for 5 or more
-            // units of the same product
+            
             itemDiscount = 0;
 
             if (quantity >= 5) {
@@ -107,10 +94,8 @@ public class bonustask {
                 );
             }
 
-            // Add the discounted item cost to the subtotal
             subtotal = subtotal + itemCost - itemDiscount;
 
-            // Track total discounts from large quantities
             quantityDiscountTotal =
                     quantityDiscountTotal + itemDiscount;
 
@@ -120,7 +105,6 @@ public class bonustask {
             System.out.println("Added to cart!");
             System.out.println("Current total: $" + subtotal);
 
-            // Bonus 3: Count each product separately
             if (choice == 1) {
                 mouseCount = mouseCount + quantity;
             } else if (choice == 2) {
@@ -130,8 +114,7 @@ public class bonustask {
             } else if (choice == 4) {
                 standCount = standCount + quantity;
             }
-
-            // Count all purchased units
+            
             itemsPurchased = itemsPurchased + quantity;
         }
 
@@ -147,7 +130,6 @@ public class bonustask {
         System.out.println("\nItems purchased: " + itemsPurchased);
         System.out.println("Subtotal after quantity discounts: $" + subtotal);
 
-        // Bonus 2: Different discount levels
         if (subtotal >= 200) {
             discount = subtotal * 0.15;
         } else if (subtotal >= 100) {
@@ -156,14 +138,12 @@ public class bonustask {
             discount = 0;
         }
 
-        // Calculate the final total
         finalTotal = subtotal - discount;
 
         System.out.println("Quantity discounts: $" + quantityDiscountTotal);
         System.out.println("Checkout discount: $" + discount);
         System.out.println("Final total: $" + finalTotal);
 
-        // Bonus 4: Find the most purchased product
         String mostPurchasedProduct = "Mouse";
         int highestQuantity = mouseCount;
 
@@ -209,12 +189,10 @@ public class bonustask {
             }
         }
 
-        // Calculate change
         change = payment - finalTotal;
 
         System.out.println("Payment successful!");
 
-        // Final receipt
         System.out.println("\n========================");
         System.out.println("       SIMPLE STORE");
         System.out.println("========================");
